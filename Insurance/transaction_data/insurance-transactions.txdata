@@ -1,0 +1,44 @@
+[
+    {
+        "transactionName": "insuranceExists",
+        "transactionLabel": "A test insuranceExists transaction",
+        "arguments": [
+            "001"
+        ],
+        "transientData": {}
+    },
+    {
+        "transactionName": "createInsurance",
+        "transactionLabel": "A test createInsurance transaction",
+        "arguments": [
+            "001",
+            "some value"
+        ],
+        "transientData": {}
+    },
+    {
+        "transactionName": "readInsurance",
+        "transactionLabel": "A test readInsurance transaction",
+        "arguments": [
+            "001"
+        ],
+        "transientData": {}
+    },
+    {
+        "transactionName": "updateInsurance",
+        "transactionLabel": "A test updateInsurance transaction",
+        "arguments": [
+            "001",
+            "some other value"
+        ],
+        "transientData": {}
+    },
+    {
+        "transactionName": "deleteInsurance",
+        "transactionLabel": "A test deleteInsurance transaction",
+        "arguments": [
+            "001"
+        ],
+        "transientData": {}
+    }
+]

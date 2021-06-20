@@ -97,12 +97,12 @@ class Insurance extends Contract {
         if (!reportAsBytes || reportAsBytes.length === 0) {
             throw new Error(`${reportNumber} does not exist`);
         }
+        const report = JSON.parse(reportAsBytes.toString());
         if(report.currentState !== 1){
             throw new Error(`${reportNumber} has invalid state to claim loss`);
         }
-        const report = JSON.parse(reportAsBytes.toString());
         report.currentState = 2;
-        report.lossAmount = amount;
+        report.lossAmount = Number(amount);
 
         await ctx.stub.putState(reportNumber, Buffer.from(JSON.stringify(report)));
         console.info('============= END : proofOfLoss ===========');
@@ -115,11 +115,11 @@ class Insurance extends Contract {
         if (!reportAsBytes || reportAsBytes.length === 0) {
             throw new Error(`${reportNumber} does not exist`);
         }
+        const report = JSON.parse(reportAsBytes.toString());
         if(report.currentState !== 2){
             throw new Error(`${reportNumber} has invalid state to claim loss`);
         }
-        const report = JSON.parse(reportAsBytes.toString());
-        report.fault = faultPercentage;
+        report.fault = parseInt(faultPercentage);
         report.currentState = 3;
 
         await ctx.stub.putState(reportNumber, Buffer.from(JSON.stringify(report)));
@@ -133,11 +133,11 @@ class Insurance extends Contract {
         if (!reportAsBytes || reportAsBytes.length === 0) {
             throw new Error(`${reportNumber} does not exist`);
         }
+        const report = JSON.parse(reportAsBytes.toString());
         if(report.currentState !== 3){
             throw new Error(`${reportNumber} has invalid state to claim loss`);
         }
-        const report = JSON.parse(reportAsBytes.toString());
-        report.paidAmount = amount;
+        report.paidAmount = Number(amount);
         report.currentState = 4;
 
         await ctx.stub.putState(reportNumber, Buffer.from(JSON.stringify(report)));
